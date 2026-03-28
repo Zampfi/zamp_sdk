@@ -1,0 +1,29 @@
+import os
+from enum import Enum
+
+from zamp_public_workflow_sdk.actions_hub.constants import ExecutionMode as AHExecutionMode
+
+
+class ExecutionMode(str, Enum):
+    SYNC = "SYNC"
+    ASYNC = "ASYNC"
+    INLINE = "INLINE"
+
+
+_SDK_TO_AH_MODE = {
+    ExecutionMode.SYNC: AHExecutionMode.TEMPORAL_SYNC,
+    ExecutionMode.ASYNC: AHExecutionMode.TEMPORAL_ASYNC,
+    ExecutionMode.INLINE: AHExecutionMode.INLINE,
+}
+
+
+def resolve_execution_mode(mode: ExecutionMode | None) -> AHExecutionMode | None:
+    """Map SDK execution mode to ActionsHub execution mode.
+
+    If INSIDE_SANDBOX=true, always returns MODAL regardless of what the caller passed.
+    """
+    if os.environ.get("INSIDE_SANDBOX") == "true":
+        return AHExecutionMode.MODAL
+    if mode is None:
+        return None
+    return _SDK_TO_AH_MODE[mode]
