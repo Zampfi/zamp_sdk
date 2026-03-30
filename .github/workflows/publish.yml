@@ -1,14 +1,19 @@
 name: Publish to PyPI
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["Bump Version and Tag"]
+    types:
+      - completed
 
 jobs:
   pypi-publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
