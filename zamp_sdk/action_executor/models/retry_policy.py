@@ -8,13 +8,6 @@ DEFAULT_RETRY_MAXIMUM_INTERVAL = timedelta(minutes=15)
 DEFAULT_RETRY_BACKOFF_COEFFICIENT = 1.5
 
 
-class SdkConfig(BaseModel):
-    """Resolved configuration for the Zamp API."""
-
-    base_url: str
-    auth_token: str
-
-
 class RetryPolicy(BaseModel):
     initial_interval: timedelta
     maximum_attempts: int

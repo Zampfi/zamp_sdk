@@ -1,6 +1,6 @@
 import asyncio
 import json
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, NoReturn, Optional, Union
 
 import aiohttp
 import structlog
@@ -40,7 +40,7 @@ class HttpClient:
             return f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
         return endpoint
 
-    def _handle_request_error(self, exc: Exception) -> None:
+    def _handle_request_error(self, exc: Exception) -> NoReturn:
         if isinstance(exc, HttpClientError):
             raise exc
         elif isinstance(exc, asyncio.TimeoutError):

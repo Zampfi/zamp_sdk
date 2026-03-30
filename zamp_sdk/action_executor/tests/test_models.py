@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from zamp_sdk.models import (
+from zamp_sdk.action_executor.models import (
     DEFAULT_RETRY_BACKOFF_COEFFICIENT,
     DEFAULT_RETRY_INITIAL_INTERVAL,
     DEFAULT_RETRY_MAXIMUM_ATTEMPTS,

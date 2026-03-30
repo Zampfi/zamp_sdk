@@ -11,8 +11,8 @@ from zamp_sdk.action_executor.constants import (
     SUCCESS_STATUSES,
     TERMINAL_FAILURE_STATUSES,
 )
+from zamp_sdk.action_executor.models import RetryPolicy, SdkConfig
 from zamp_sdk.action_executor.utils import HttpClient
-from zamp_sdk.models import RetryPolicy, SdkConfig
 
 
 class ActionExecutor:

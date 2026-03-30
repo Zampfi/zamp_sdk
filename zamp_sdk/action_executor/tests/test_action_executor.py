@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from zamp_sdk.action_executor.action_executor import ActionExecutor
-from zamp_sdk.models import RetryPolicy, SdkConfig
+from zamp_sdk.action_executor.models import RetryPolicy, SdkConfig
 
 _MODULE = "zamp_sdk.action_executor.action_executor"
 
