@@ -3,27 +3,27 @@
 .PHONY: install lint lint-fix format type-check test test-cov check clean
 
 install:
-	uv sync --dev
+	poetry install --with dev
 
 lint:
-	uv run ruff check .
-	uv run ruff format --check .
+	poetry run ruff check .
+	poetry run ruff format --check .
 
 lint-fix:
-	uv run ruff check --fix .
-	uv run ruff format .
+	poetry run ruff check --fix .
+	poetry run ruff format .
 
 format:
-	uv run ruff format .
+	poetry run ruff format .
 
 type-check:
-	uv run mypy zamp_sdk
+	poetry run mypy zamp_sdk
 
 test:
-	uv run pytest
+	poetry run pytest
 
 test-cov:
-	uv run pytest --cov=zamp_sdk --cov-report=xml --cov-report=term-missing
+	poetry run pytest --cov=zamp_sdk --cov-report=xml --cov-report=term-missing
 
 check: lint type-check test
 

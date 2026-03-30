@@ -1,15 +1,12 @@
-[build-system]
-requires = ["setuptools>=70"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "zamp-sdk"
 version = "0.0.1"
 description = "Customer-facing SDK for executing actions on the Zamp platform"
+authors = ["Zamp Engineering <engineering@zamp.com>"]
 readme = "README.md"
-requires-python = ">=3.12,<4.0"
-license = { text = "MIT" }
-authors = [{ name = "Zamp Engineering", email = "engineering@zamp.com" }]
+packages = [{include = "zamp_sdk"}]
+license = "MIT"
+keywords = ["zamp", "sdk", "actions", "automation"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -19,34 +16,32 @@ classifiers = [
     "Typing :: Typed",
     "Framework :: AsyncIO",
 ]
-keywords = ["zamp", "sdk", "actions", "automation"]
 
-dependencies = [
-    "aiohttp",
-    "pydantic",
-    "structlog",
-]
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-asyncio",
-    "pytest-cov",
-    "ruff",
-    "mypy",
-    "pre-commit",
-    "diff-cover",
-]
-
-[project.urls]
+[tool.poetry.urls]
 Homepage = "https://github.com/Zampfi/zamp-sdk"
 Documentation = "https://github.com/Zampfi/zamp-sdk#readme"
 Repository = "https://github.com/Zampfi/zamp-sdk"
 Issues = "https://github.com/Zampfi/zamp-sdk/issues"
 Changelog = "https://github.com/Zampfi/zamp-sdk/releases"
 
-[tool.setuptools.packages.find]
-include = ["zamp_sdk*"]
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+aiohttp = "*"
+pydantic = "*"
+structlog = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+ruff = "*"
+mypy = "*"
+pre-commit = "*"
+diff-cover = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 python_version = "3.12"
