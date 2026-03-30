@@ -25,7 +25,7 @@ Issues = "https://github.com/Zampfi/zamp-sdk/issues"
 Changelog = "https://github.com/Zampfi/zamp-sdk/releases"
 
 [tool.poetry.dependencies]
-python = ">=3.12,<4.0"
+python = "^3.12"
 aiohttp = "*"
 pydantic = "*"
 structlog = "*"
