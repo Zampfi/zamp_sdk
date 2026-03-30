@@ -12,10 +12,10 @@ The official Python SDK for executing actions on the [Zamp](https://zamp.ai) pla
 pip install zamp-sdk
 ```
 
-Or with [uv](https://docs.astral.sh/uv/):
+Or with [Poetry](https://python-poetry.org/):
 
 ```bash
-uv add zamp-sdk
+poetry add zamp-sdk
 ```
 
 ## Quick Start
@@ -158,7 +158,7 @@ make clean         # remove build artifacts
 Pre-commit hooks are configured -- install them with:
 
 ```bash
-uv run pre-commit install
+poetry run pre-commit install
 ```
 
 ## License

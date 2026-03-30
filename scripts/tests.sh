@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "=== Running tests with coverage ==="
-uv run pytest \
+poetry run pytest \
     --cov=zamp_sdk \
     --cov-report=xml \
     --cov-report=term-missing \
@@ -12,7 +12,7 @@ CHANGED_LINES=$(git diff --stat origin/main -- '*.py' | tail -1 | grep -oP '\d+(
 
 if [ "$CHANGED_LINES" -gt 30 ]; then
     echo "=== Running diff-cover (fail-under=80) ==="
-    uv run diff-cover coverage.xml --compare-branch=origin/main --fail-under=80
+    poetry run diff-cover coverage.xml --compare-branch=origin/main --fail-under=80
 else
     echo "=== Skipping diff-cover ($CHANGED_LINES changed lines < 30 threshold) ==="
 fi

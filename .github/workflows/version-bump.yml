@@ -37,16 +37,19 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 0
 
-      - uses: astral-sh/setup-uv@v7
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
       - name: Bump patch version
         id: bump
         run: |
-          uv version --bump patch
-          NEW_VERSION=$(uv version)
+          poetry version patch
+          NEW_VERSION=$(poetry version -s)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "Bumped version to $NEW_VERSION"
 
