@@ -1,9 +1,5 @@
 from enum import StrEnum
 
-POLL_INITIAL_INTERVAL_SECONDS = 1.0
-POLL_MAX_INTERVAL_SECONDS = 30.0
-POLL_TIMEOUT_SECONDS = 600.0
-
 
 class ActionStatus(StrEnum):
     RUNNING = "RUNNING"
