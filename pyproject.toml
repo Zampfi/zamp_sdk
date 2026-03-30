@@ -12,7 +12,7 @@ license = { text = "MIT" }
 authors = [{ name = "Zamp Engineering", email = "engineering@zamp.com" }]
 
 dependencies = [
-    "zamp_public_workflow_sdk @ git+https://github.com/Zampfi/public-workflow-sdk.git@4d3c6ffb5f358701589f26666404ac07a142a1e6",
+    "zamp_public_workflow_sdk @ git+https://github.com/Zampfi/public-workflow-sdk.git@59b12b1bc1d243f3e765dfd997243692b8b1ab3b",
     "aiohttp",
     "pydantic",
     "structlog",
