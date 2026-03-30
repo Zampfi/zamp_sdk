@@ -27,7 +27,11 @@ def resolve_execution_mode(mode: ExecutionMode | None) -> AHExecutionMode | None
     pprint.pprint(dict(os.environ))
 
     if os.environ.get("INSIDE_SANDBOX") == "true":
-        return AHExecutionMode.MODAL
-    if mode is None:
-        return None
-    return _SDK_TO_AH_MODE[mode]
+        chosen = AHExecutionMode.MODAL
+    elif mode is None:
+        chosen = None
+    else:
+        chosen = _SDK_TO_AH_MODE[mode]
+
+    print(f"[resolve_execution_mode] chosen mode: {chosen!r}")
+    return chosen
